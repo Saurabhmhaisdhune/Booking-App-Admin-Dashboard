@@ -1,0 +1,40 @@
+.add-hotel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #003580;
+  padding: 50px;
+  border: 1px solid grey;
+}
+input {
+  width: 450px;
+  height: 35px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: 1px solid rgb(206, 206, 206);
+}
+.add-btn {
+  background-color: rgba(60, 134, 252, 0.757);
+  width: 450px;
+  height: 35px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 3px;
+}
+.center-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancal-btn {
+    background-color: rgba(255, 0, 0, 0.684);
+    width: 450px;
+    height: 35px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+}
