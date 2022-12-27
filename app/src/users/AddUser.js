@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 let initialValue = {
   username: "",
@@ -12,8 +11,6 @@ let initialValue = {
 };
 export default function AddUser(props) {
   const [userData, setUserData] = useState(initialValue);
-
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
