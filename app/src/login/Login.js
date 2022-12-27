@@ -27,7 +27,7 @@ const Login = () => {
   const handleSubmit = () => {
     axios
       .post(
-        "http://localhost:8000/api/admin/adminlogin",
+        "https://booking-app-p324.onrender.com/api/admin/adminlogin",
         JSON.stringify(hotelData),
         {
           headers: {

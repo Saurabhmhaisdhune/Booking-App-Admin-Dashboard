@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./updateHotel.css";
 
@@ -31,8 +31,7 @@ export default function Editdetail() {
           },
         }
       )
-      .then(() => setHotelData(initialValue));
-    navigate("/");
+      .then(() => navigate("/home"));
   };
 
   return (
@@ -86,7 +85,7 @@ export default function Editdetail() {
           <button
             type="button"
             onClick={() => {
-              navigate("/");
+              navigate("/home");
             }}
             className="cancal-btn"
           >

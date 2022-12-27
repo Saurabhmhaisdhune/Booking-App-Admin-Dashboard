@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
 
 function App() {
-  const navigate = useNavigate();
-  const [student, setStudent] = useState([]);
+  const [user, setUser] = useState([]);
   const [show, setShow] = useState(false);
 
   const getData = async () => {
     await fetch("https://booking-app-p324.onrender.com/api/users")
       .then((response) => response.json())
-      .then((data) => setStudent(data));
+      .then((data) => setUser(data));
   };
 
   const handleDelete = (_id) => {
@@ -27,7 +25,7 @@ function App() {
   return (
     <>
       {show ? (
-        <AddUser />
+        <AddUser setShow={setShow} getData={getData}/>
       ) : (
         <div className="hotel-page">
           <p className="headline">List of all Register Users</p>
@@ -46,7 +44,7 @@ function App() {
               </tr>
             </tbody>
             <tbody>
-              {student?.map((value, index) => {
+              {user?.map((value, index) => {
                 return (
                   <tr key={value._id}>
                     <td>{index + 1}</td>

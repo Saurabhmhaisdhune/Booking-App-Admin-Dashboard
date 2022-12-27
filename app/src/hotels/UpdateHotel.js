@@ -137,7 +137,7 @@ export default function UpdateHotel() {
           <button
             type="button"
             onClick={() => {
-              navigate("/");
+              navigate("/home");
             }}
             className="cancal-btn"
           >

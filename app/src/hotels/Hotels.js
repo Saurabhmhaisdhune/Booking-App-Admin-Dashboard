@@ -28,7 +28,7 @@ function Hotels() {
   return (
     <>
       {show ? (
-        <AddHotel setShow={setShow}/>
+        <AddHotel setShow={setShow} getData={getData}/>
       ) : (
     <div className="hotel-page">
       <p className="headline">List of all available hotels</p>

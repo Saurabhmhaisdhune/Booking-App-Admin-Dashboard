@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./addhotel.css";
-import { useNavigate } from "react-router-dom";
 
 let initialValue = {
   name: "",
@@ -17,8 +16,6 @@ let initialValue = {
 export default function AddHotel(props) {
   const [hotelData, setHotelData] = useState(initialValue);
 
-  const navigate = useNavigate();
-
   const handleChange = (e) => {
     setHotelData({ ...hotelData, [e.target.name]: e.target.value });
   };
@@ -30,7 +27,7 @@ export default function AddHotel(props) {
           "Content-type": "application/json",
         },
       })
-      .then(() =>props.setShow(false));
+      .then(() =>{props.setShow(false);props.getdata()});
     
   };
 

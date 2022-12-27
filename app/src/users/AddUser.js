@@ -10,7 +10,7 @@ let initialValue = {
   phone: "",
   password: "",
 };
-export default function AddUser() {
+export default function AddUser(props) {
   const [userData, setUserData] = useState(initialValue);
 
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ export default function AddUser() {
           },
         }
       )
-      .then(() => setUserData(initialValue));
-    navigate("/");
+      .then(() => {props.setShow(false);props.getData()});
+    ;
   };
 
   return (
@@ -87,7 +87,7 @@ export default function AddUser() {
           <button
             type="button"
             onClick={() => {
-              navigate("/home");
+              props.setShow(false);
             }}
             className="cancal-btn"
           >
