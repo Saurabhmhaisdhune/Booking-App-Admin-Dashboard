@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import "./hotels.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AddHotel from "./AddHotel";
 
 function Hotels() {
   const navigate = useNavigate();
   const [student, setStudent] = useState([]);
+  const [show, setShow] = useState(false);
 
   const getData = () => {
     fetch("https://booking-app-p324.onrender.com/api/hotels")
@@ -24,6 +26,10 @@ function Hotels() {
   }, []);
 
   return (
+    <>
+      {show ? (
+        <AddHotel setShow={setShow}/>
+      ) : (
     <div className="hotel-page">
       <p className="headline">List of all available hotels</p>
       <table>
@@ -84,10 +90,12 @@ function Hotels() {
               </tbody>
 
       </table>
-      <button className="create-btn" onClick={() => navigate("/addHotel")}>
+      <button className="create-btn" onClick={() => setShow(true)}>
         Add New Hotel
       </button>
     </div>
+      )}
+      </>
   );
 }
 

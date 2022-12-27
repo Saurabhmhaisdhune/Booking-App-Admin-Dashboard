@@ -14,7 +14,7 @@ let initialValue = {
   desc: "",
   cheapestPrice: "",
 };
-export default function AddHotel() {
+export default function AddHotel(props) {
   const [hotelData, setHotelData] = useState(initialValue);
 
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ export default function AddHotel() {
           "Content-type": "application/json",
         },
       })
-      .then(() => setHotelData(initialValue));
-    navigate("/");
+      .then(() =>props.setShow(false));
+    
   };
 
   return (
@@ -117,7 +117,7 @@ export default function AddHotel() {
           <button
             type="button"
             onClick={() => {
-              navigate("/");
+             props.setShow(false)
             }}
             className="cancal-btn"
           >

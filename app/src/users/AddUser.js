@@ -87,7 +87,7 @@ export default function AddUser() {
           <button
             type="button"
             onClick={() => {
-              navigate("/");
+              navigate("/home");
             }}
             className="cancal-btn"
           >

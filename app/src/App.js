@@ -1,22 +1,27 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Main from "./main/Main";
-import AddHotel from "./hotels/AddHotel";
 import UpdateHotel from "./hotels/UpdateHotel";
-import AddUser from "./users/AddUser";
 import AddRoom from "./hotels/AddRoom";
 import Login from "./login/Login";
+import ProtectedRoute from "./login/ProtectedRoute";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main/>} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Main />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate replace to="/login" />} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/addHotel" element={<AddHotel />} />
-          <Route path="/addUser" element={<AddUser />} />
           <Route path="/edithotel/:id" element={<UpdateHotel />} />
           <Route path="/addroom/:id" element={<AddRoom />} />
         </Routes>

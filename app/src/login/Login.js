@@ -4,17 +4,24 @@ import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 const initialValue = {
-  username: undefined,
-  password: undefined,
+  username: "",
+  password: "",
 };
 
 const Login = () => {
   const [hotelData, setHotelData] = useState(initialValue);
+  const [show, setShow] = useState(false);
+  const [btn, setbtn] = useState(false);
+
+  const handleCredendials = () => {
+    setShow((prev) => !prev);
+    setbtn((prev) => !prev);
+  };
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setHotelData({ ...hotelData, [e.target.id]: e.target.value });
+    setHotelData({ ...hotelData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
@@ -28,15 +35,18 @@ const Login = () => {
           },
         }
       )
-      .then(() => setHotelData(initialValue));
-    navigate("/");
+      .then((res) => {
+        localStorage.setItem("token",res.data.token)
+        navigate("/home");
+      });
+
   };
 
   return (
     <div className="background">
       <div className="login">
         <div className="lContainer">
-          <p className="head-line">Login</p>
+          <p className="head-line">Admin Login</p>
           <input
             type="text"
             placeholder="username"
@@ -54,6 +64,20 @@ const Login = () => {
           <button onClick={handleSubmit} className="lButton">
             Login
           </button>
+          <div className="login-p">
+            Click{" "}
+            <span className="login-here" onClick={handleCredendials}>
+              here
+            </span>{" "}
+            to {btn ? "hide" : "see"} Admin Credentials
+            {show ? (
+              <p>
+                Username: demoAdmin <br /> Password: demoAdmin123
+              </p>
+            ) : (
+              <p>***********</p>
+            )}
+          </div>
         </div>
       </div>
     </div>
