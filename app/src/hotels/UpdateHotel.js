@@ -46,7 +46,7 @@ export default function UpdateHotel() {
         }
       )
       .then(() => setHotelData(initialValue));
-    navigate("/");
+    navigate("/home");
   };
 
   return (
